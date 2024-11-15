@@ -2,7 +2,7 @@
 
 <h1>Book detail</h1>
 
-<%= image_tag 'sample-user1.jpg' %>
+<%= image_tag @book.user.get_profile_image(100,100) %>
 <%= link_to @book.user.name, user_path(@book.user.id) %>
 <%= @book.created_at.strftime('%Y/%m/%d') %>
 <%= link_to @book.title, book_path(@book.id) %>
