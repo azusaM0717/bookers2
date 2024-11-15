@@ -4,17 +4,28 @@
     <h3>name<%= @user.name %></h3><br>
     <h3>introduction<%= @user.introduction %></h3>
   <% if @user == current_user %>
-    <p><%= link_to "edit profile", edit_user_path(@user) %></p>
+    <%= link_to edit_user_path(@user) do %>
+      <i class="fa-solid fa-user-gear"></i>
   <% end %>
+<% end %>
 </div>  
 
 <h2>New book</h2>
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-    <%= f.text_field :title %>
+<% if @book.errors.any? %>
+<%= @book.errors.count %>errors prohibited this obj from being saved:
+<ul>
+  <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
 
-    <h4>Opinion</h4>
-    <%= f.text_area :opinion %>
+<%= form_with model: @book do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
 
-    <%= f.submit 'Create Book' %>
+  <h4>Opinion</h4>
+  <%= f.text_area :opinion %>
+
+  <%= f.submit 'Create Book' %>
 <% end %>
