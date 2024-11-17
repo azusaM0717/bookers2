@@ -2,19 +2,28 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
 
     <script src="https://kit.fontawesome.com/1a24d1deb3.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <%= link_to "Bookers", root_path %>
-      <% if user_signed_in? %>
+  <body class="d-fle flex-column vh-100">
+    <header class="bg-dark text-white pt-5 pb-4">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+        <a class="navbar-brand p-3" href="/">Bookers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
         <ul>
         <li>
           <i class="fa-solid fa-house"></i>
@@ -51,19 +60,23 @@
           <i class="fa-solid fa-right-to-bracket"></i>
           <%= link_to "Log in", new_user_session_path %>
           </li>
-        </ul>
       <% end %>
+      </ul>
+      </div>
+      </div>
+      </div>
+      </nav>
     </header>
     
-    <div class="alert alert-success">
-    <%= flash[:notice] %>
-    </div>
-    
-    
-    <footer>
+    <main class="mb-auto">
+      <div class="alert alert-success">
+      <%= flash[:notice] %>
+      </div>
+    <%= yield %>
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-4">
       <p>CopyRight Infratop.inc</p>
     </footer>
-    <%= yield %>
   </body>
-  
 </html>
