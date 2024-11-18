@@ -36,8 +36,7 @@ class UsersController < ApplicationController
       render 'users/edit'
     end
   end
-
-private
+  private
   def user_params
     params.require(:user).permit(:name, :image, :introduction)
   end
