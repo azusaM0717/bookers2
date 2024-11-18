@@ -1,3 +1,12 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
   <div class="row">
   <div class="col-lg-3">
@@ -5,24 +14,24 @@
   </div>
   <div class="col-lg-8 offset-md-1">
     <h1>Books</h1>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-          </tr>
-        </thead>
-      <tbody>
-        <% @books.each do |book| %>
-        <tr>
-          <td><%= link_to image_tag(book.user.get_image(100,100)), user_path(book.user.id) %></td>
-          <td><%= link_to book.title, book_path(book.id) %></td>
-          <td><%= book.opinion %></td>
-        </tr>  
-        <% end %>
-      </tbody>
-      </table>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Title</th>
+        <th scope="col">Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <th scope="row"><%= link_to image_tag(book.user.get_image(100,100)), user_path(book.user.id) %></th>
+        <th scope="row"><%= link_to book.title, book_path(book.id) %></th>
+        <th scope="row"><%= book.opinion %></th>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
     </div>
   </div>
 </div>

@@ -10,16 +10,24 @@
 </div>
 
 <div>
-  <table>
-    <tr>name</tr>
-    <tr><%= user.name %></tr>
-    <th>introduction</th>
-    <th><%= user.introduction %></th>
-  </table>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">name</th>
+    <th scope="col"><%= user.name %></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th scope="row">introduction</th>
+    <th scope="row"><%= user.introduction %></th>
+  </tr>
+</tbody>
+</table>
+
   <% if user == current_user %>
     <%= link_to edit_user_path(user) do %>
-      <button class="btn btn-secondary">
-      <i class="fa-solid fa-user-gear"></i>
+      <button type="button" class="btn btn-outline-secondary btn-block"><i class="fa-solid fa-user-gear"></i></button>
       </button>
     <% end %>
   <% end %>
