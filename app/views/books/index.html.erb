@@ -25,8 +25,8 @@
     <tbody>
       <% @books.each do |book| %>
       <tr>
-        <th scope="row"><%= link_to image_tag(book.user.get_image(100,100)), user_path(book.user.id) %></th>
-        <th scope="row"><%= link_to book.title, book_path(book.id) %></th>
+        <th scope="row"><%= link_to image_tag(book.user.get_profile_image(100,100)), user_path(book.user.id) %></th>
+        <th scope="row"><%= link_to book.title, book_path(book) %></th>
         <th scope="row"><%= book.opinion %></th>
       </tr>
       <% end %>

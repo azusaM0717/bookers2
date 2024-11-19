@@ -14,14 +14,14 @@
       <tr>
         <th scope="col">
           <%= link_to user_path(@book.user.id) do %>
-            <%= image_tag @book.user.get_image(100,100) %>
+            <%= image_tag @book.user.get_profile_image(100,100) %>
             <br>
             <%= @book.user.name %></th>
           <% end %>
         <th scope="col"><%= link_to @book.title, book_path(@book.id) %>
         <th scope="col"><%= @book.opinion %>
-        <th scope="col"><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success " %>
-        <th scope="col"><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger " %>
+        <th scope="col"><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success " if @book.user == current_user %>
+        <th scope="col"><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" if @book.user == current_user %>
       </tr>
     </thead>
   </table>  
