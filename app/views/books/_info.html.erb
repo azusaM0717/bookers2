@@ -3,9 +3,9 @@
 <div>
   <% if user.present? %>
   <% if user.profile_image.attached? %>
-    <%= profile_image_tag user.profile_image, size: "100x100" %>
+    <%= image_tag user.profile_image, size: "100x100" %>
   <% else %>
-    <%= profile_image_tag 'no_image', size: "100x100" %>
+    <%= image_tag 'no_image', size: "100x100" %>
   <% end %>
 </div>
 
@@ -32,14 +32,6 @@
 </div>  
 
 <h2>New book</h2>
-<% if book.errors.any? %>
-<%= book.errors.count %> errors prohibited this obj from being saved:
-<ul>
-  <% book.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
 
 <%= form_with model: Book.new do |f| %>
   <h5>Title</h5>

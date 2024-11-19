@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome! You have signed up successfully."
+      # flash[:notice] = "Welcome! You have signed up successfully."
       redirect_to root_path
     else
       render :new
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = current_user
   end
 
   def edit
@@ -44,6 +45,6 @@ class UsersController < ApplicationController
   end
   private
   def user_params
-    params.require(:user).permit(:name, :image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end
