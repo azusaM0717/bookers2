@@ -4,10 +4,10 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-lg-3">
+  <div class="col-md-3">
   <%= render 'info', user: @user, book: @book %>
   </div>
-  <div class="col-lg-8 offset-md-1">
+  <div class="col-md-8 offset-md-1">
   <h1>Book detail</h1>
   <table class="table table-striped">
     <thead>
@@ -19,7 +19,7 @@
             <%= @book.user.name %></th>
           <% end %>
         <th scope="col"><%= link_to @book.title, book_path(@book.id) %>
-        <th scope="col"><%= @book.opinion %>
+        <th scope="col"><%= @book.body %>
         <th scope="col"><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success " if @book.user == current_user %>
         <th scope="col"><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" if @book.user == current_user %>
       </tr>

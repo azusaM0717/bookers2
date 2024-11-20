@@ -9,10 +9,10 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-lg-3">
+  <div class="col-md-3">
   <%= render 'info', user: @user %>
   </div>
-  <div class="col-lg-8 offset-md-1">
+  <div class="col-md-8 offset-md-1">
     <h1>Books</h1>
     <table class="table table-striped">
     <thead>
@@ -27,7 +27,7 @@
       <tr>
         <th scope="row"><%= link_to image_tag(book.user.get_profile_image(100,100)), user_path(book.user.id) %></th>
         <th scope="row"><%= link_to book.title, book_path(book) %></th>
-        <th scope="row"><%= book.opinion %></th>
+        <th scope="row"><%= book.body %></th>
       </tr>
       <% end %>
     </tbody>
